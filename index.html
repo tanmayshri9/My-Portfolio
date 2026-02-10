@@ -3,80 +3,494 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tanmay | Portfolio</title>
+  <title>Tanmay Shrivastava | Portfolio</title>
+  <meta name="description" content="Senior BI Engineer / Data Scientist portfolio — KPI frameworks, dashboards, customer analytics, forecasting, and ML." />
+
   <style>
-    body{font-family:system-ui,Arial;margin:0;background:#0b1220;color:#e6e6e6}
-    header{padding:64px 20px;text-align:center;background:linear-gradient(135deg,#1e3a8a,#7c3aed)}
-    h1{margin:0;font-size:40px}
-    p{max-width:720px;margin:12px auto}
-    a{color:#fff}
-    .wrap{max-width:980px;margin:0 auto;padding:28px 20px}
-    .card{background:#111a2e;border:1px solid #22304d;border-radius:14px;padding:18px;margin:14px 0}
-    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .tag{display:inline-block;padding:4px 10px;border:1px solid #2a3b61;border-radius:999px;margin:6px 6px 0 0;font-size:12px}
-    footer{padding:24px 20px;text-align:center;color:#aab}
-    .btn{display:inline-block;margin:10px 8px;padding:10px 14px;border-radius:10px;background:#0f172a;border:1px solid #2a3b61;text-decoration:none}
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a2b;
+      --panel2:#0e1726;
+      --border:#22304d;
+      --text:#e9eef7;
+      --muted:#aab7d1;
+      --accent1:#1e3a8a;
+      --accent2:#7c3aed;
+      --link:#dbeafe;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(124,58,237,.25), transparent 50%),
+                  radial-gradient(1000px 500px at 90% 0%, rgba(30,58,138,.35), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1050px; margin:0 auto; padding:24px}
+    header{
+      margin:18px 0 26px;
+      border:1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(135deg, rgba(30,58,138,.95), rgba(124,58,237,.85));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero{
+      padding:44px 24px 28px;
+      text-align:center;
+    }
+    .hero h1{
+      margin:0;
+      font-size:clamp(28px, 4vw, 44px);
+      letter-spacing:.2px;
+    }
+    .hero .title{
+      margin:10px 0 0;
+      font-size:clamp(16px, 2vw, 20px);
+      opacity:.95;
+      font-weight:600;
+    }
+    .hero .subtitle{
+      margin:14px auto 0;
+      max-width:820px;
+      color: rgba(255,255,255,.92);
+      font-size: 15.5px;
+    }
+    .hero .meta{
+      margin:14px 0 0;
+      font-size: 14px;
+      color: rgba(255,255,255,.88);
+    }
+    .btns{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin:18px 0 0;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(10,15,25,.22);
+      backdrop-filter: blur(6px);
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
+      text-decoration:none;
+    }
+    .btn:hover{
+      background: rgba(10,15,25,.32);
+      text-decoration:none;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+    }
+    @media(min-width: 900px){
+      .grid.two{ grid-template-columns: 1fr 1fr; }
+      .grid.three{ grid-template-columns: repeat(3, 1fr); }
+    }
+    section.card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:18px 18px 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.22);
+    }
+    section.card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .muted{color:var(--muted)}
+    .tags{margin-top:10px}
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid #2a3b61;
+      background: rgba(17,26,46,.55);
+      margin:6px 6px 0 0;
+      color: #d6e2ff;
+      white-space:nowrap;
+    }
+    .proj{
+      background: rgba(15,26,43,.75);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .proj h3{
+      margin:0 0 8px;
+      font-size:16px;
+    }
+    .proj p{margin:0 0 10px}
+    .proj .impact{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px dashed rgba(219,234,254,.35);
+      background: rgba(219,234,254,.06);
+      color:#eaf2ff;
+      font-size: 13.5px;
+    }
+    .proj .links{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .pill{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid #2a3b61;
+      background: rgba(14,23,38,.65);
+      font-weight:600;
+      font-size:13px;
+      color:#e9eef7;
+    }
+    ul.clean{
+      margin:10px 0 0;
+      padding-left:18px;
+    }
+    footer{
+      text-align:center;
+      padding:22px 0 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .small{font-size:13px}
+    .split{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+    }
+    @media(min-width: 900px){
+      .split{ grid-template-columns: 1.15fr .85fr; }
+    }
+    .hr{
+      height:1px;
+      background: rgba(34,48,77,.75);
+      border:none;
+      margin:14px 0;
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Tanmay Shrivastava</h1>
-    <p>Data / ML Enthusiast • Portfolio</p>
-    <a class="btn" href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
-    <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
-    <a class="btn" href="YOUR_RESUME_LINK" target="_blank">Resume</a>
-  </header>
+  <div class="container">
+    <header>
+      <div class="hero">
+        <h1>Tanmay Shrivastava</h1>
+        <div class="title">Senior BI Engineer | Data Scientist</div>
+        <p class="subtitle">
+          I build scalable analytics, data products, and machine learning solutions that drive revenue growth,
+          cost optimization, and executive decision-making.
+        </p>
+        <div class="meta">Atlanta, Georgia (Open to Relocate) • tanmayts09@gmail.com • +1-513-850-7123</div>
 
-  <div class="wrap">
-    <section class="card">
-      <h2>About</h2>
-      <p>Write 3–5 lines about what you do, what you’re learning, and what roles you want.</p>
-    </section>
+        <div class="btns">
+          <!-- TODO: Replace links -->
+          <a class="btn" href="https://github.com/YOUR_USERNAME" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noreferrer">Resume</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+    </header>
 
-    <section class="card">
-      <h2>Skills</h2>
-      <span class="tag">Python</span>
-      <span class="tag">SQL</span>
-      <span class="tag">Pandas</span>
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Power BI</span>
-    </section>
+    <div class="split">
+      <!-- ABOUT -->
+      <section class="card" id="about">
+        <h2>About</h2>
+        <p>
+          I am a Senior Business Intelligence Engineer and Data Scientist with 8+ years of experience building
+          end-to-end analytics and data science solutions across retail, e-commerce, finance, and manufacturing.
+        </p>
+        <p>
+          My work sits at the intersection of business strategy and advanced analytics. I specialize in SQL-driven
+          data modeling, executive dashboards, customer analytics, forecasting, and experimentation, enabling leadership
+          teams to make data-backed decisions that drive revenue and operational efficiency.
+        </p>
+        <p>
+          I have led large-scale initiatives including marketing KPI automation, customer lifetime value modeling,
+          RFM and clustering-based segmentation, pricing and inventory analytics, and geospatial analytics for real estate decisions.
+          My solutions have delivered measurable impact including $4M+ in incremental revenue and $1M+ in cost savings.
+        </p>
+        <p>
+          I enjoy solving ambiguous business problems, translating them into scalable data products, and mentoring teams
+          on best practices in BI, analytics engineering, and applied machine learning.
+        </p>
+      </section>
 
-    <section class="card">
+      <!-- QUICK SKILLS -->
+      <section class="card" id="skills">
+        <h2>Skills</h2>
+
+        <div class="small muted">BI & Analytics</div>
+        <div class="tags">
+          <span class="tag">KPI Frameworks</span>
+          <span class="tag">Executive Dashboards</span>
+          <span class="tag">Self-Service BI</span>
+          <span class="tag">Data Modeling</span>
+          <span class="tag">Semantic Layers</span>
+        </div>
+
+        <hr class="hr" />
+
+        <div class="small muted">Data Science & ML</div>
+        <div class="tags">
+          <span class="tag">Regression</span>
+          <span class="tag">Classification</span>
+          <span class="tag">Clustering</span>
+          <span class="tag">RFM & CLV Modeling</span>
+          <span class="tag">Forecasting</span>
+          <span class="tag">Experimentation / A-B Testing</span>
+          <span class="tag">LLMs</span>
+          <span class="tag">Gen AI</span>
+          <span class="tag">Agentic AI</span>
+        </div>
+
+        <hr class="hr" />
+
+        <div class="small muted">Tools & Tech</div>
+        <div class="tags">
+          <span class="tag">SQL (Advanced)</span>
+          <span class="tag">Python</span>
+          <span class="tag">R</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Looker Studio</span>
+          <span class="tag">Oracle</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">Redshift</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">AWS (S3, Glue)</span>
+          <span class="tag">Google Analytics</span>
+        </div>
+
+        <hr class="hr" />
+
+        <div class="small muted">Domains</div>
+        <div class="tags">
+          <span class="tag">Customer Analytics</span>
+          <span class="tag">Marketing Analytics</span>
+          <span class="tag">Pricing & Inventory</span>
+          <span class="tag">Retail & E-commerce</span>
+          <span class="tag">Financial Analytics</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- PROJECTS -->
+    <section class="card" id="projects" style="margin-top:16px;">
       <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Project 1 Title</h3>
-          <p>1–2 lines describing what it does + result.</p>
+      <p class="muted" style="margin-top:0;">
+        Below are portfolio-style projects aligned to my work across BI, analytics engineering, and applied machine learning.
+        (Links can point to GitHub repos and live demos when available.)
+      </p>
+
+      <div class="grid two">
+        <div class="proj">
+          <h3>Marketing KPI Automation & Executive Dashboard</h3>
           <p>
-            <a class="btn" href="https://github.com/YOUR_USERNAME/REPO1" target="_blank">Code</a>
-            <a class="btn" href="DEMO_LINK" target="_blank">Live</a>
+            Built an end-to-end marketing analytics solution integrating multi-source data (Oracle, SQL Server,
+            Google Analytics, marketing platforms) into a centralized semantic model and executive dashboards.
           </p>
-          <div>
-            <span class="tag">Python</span><span class="tag">ML</span>
+          <p>
+            Designed KPI frameworks tracking revenue, conversion rate, AOV, ROAS, new vs repeat customers, and marketing spend.
+            Enabled self-service and conversational analytics with clearly defined metric logic and business definitions.
+          </p>
+          <div class="impact"><strong>Impact:</strong> Improved executive visibility into marketing performance and eliminated manual reporting workflows.</div>
+          <div class="links">
+            <a class="pill" href="https://github.com/YOUR_USERNAME/marketing-kpi-dashboard" target="_blank" rel="noreferrer">Code</a>
+            <a class="pill" href="YOUR_DEMO_LINK" target="_blank" rel="noreferrer">Live</a>
+          </div>
+          <div class="tags">
+            <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Semantic Modeling</span><span class="tag">Google Analytics</span>
           </div>
         </div>
 
-        <div class="card">
-          <h3>Project 2 Title</h3>
-          <p>1–2 lines describing what it does + result.</p>
+        <div class="proj">
+          <h3>Customer Segmentation & RFM Know-Your-Buyer Tool</h3>
           <p>
-            <a class="btn" href="https://github.com/YOUR_USERNAME/REPO2" target="_blank">Code</a>
+            Developed a customer analytics solution using RFM metrics and K-means clustering to segment customers into high-value,
+            at-risk, and growth segments.
           </p>
-          <div>
-            <span class="tag">SQL</span><span class="tag">Analytics</span>
+          <p>
+            Built a Know-Your-Buyer dashboard enabling marketers to analyze customer lifetime value, engagement patterns,
+            and purchase behavior.
+          </p>
+          <div class="impact"><strong>Impact:</strong> Enabled targeted campaigns and contributed to $4M in incremental revenue.</div>
+          <div class="links">
+            <a class="pill" href="https://github.com/YOUR_USERNAME/rfm-kyb" target="_blank" rel="noreferrer">Code</a>
+            <a class="pill" href="YOUR_DEMO_LINK" target="_blank" rel="noreferrer">Live</a>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">K-means</span><span class="tag">RFM</span><span class="tag">Power BI</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Customer Lifetime Value & Propensity Modeling</h3>
+          <p>
+            Built customer lifetime value and propensity models using regression and classification techniques to predict repeat
+            purchases and campaign responsiveness.
+          </p>
+          <p>
+            Performed feature engineering on transactional, behavioral, and demographic data and evaluated model performance
+            using cross-validation and business KPIs.
+          </p>
+          <div class="impact"><strong>Impact:</strong> Improved marketing ROI and personalization effectiveness.</div>
+          <div class="links">
+            <a class="pill" href="https://github.com/YOUR_USERNAME/clv-propensity" target="_blank" rel="noreferrer">Code</a>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span><span class="tag">Regression</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Inventory, Fulfillment & Cost Optimization Analytics</h3>
+          <p>
+            Analyzed SKU-level sales and fulfillment data across 20K+ products to identify inefficient shipment patterns and multi-shipments.
+          </p>
+          <p>
+            Applied Random Forest and logistic regression models to optimize order-routing logic across warehouses, stores, and vendors.
+          </p>
+          <div class="impact"><strong>Impact:</strong> Reduced fulfillment costs and delivered $800K in annual savings.</div>
+          <div class="links">
+            <a class="pill" href="https://github.com/YOUR_USERNAME/fulfillment-optimization" target="_blank" rel="noreferrer">Code</a>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Random Forest</span><span class="tag">Logistic Regression</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Pricing & Demand Elasticity Analytics</h3>
+          <p>
+            Designed SKU-level pricing and inventory analytics across 5,000+ products to analyze demand trends, price elasticity,
+            and promotion impact.
+          </p>
+          <p>
+            Used regression and statistical analysis to support pricing and assortment decisions across footwear categories.
+          </p>
+          <div class="links">
+            <a class="pill" href="https://github.com/YOUR_USERNAME/pricing-elasticity" target="_blank" rel="noreferrer">Code</a>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Statistics</span><span class="tag">Regression</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Geospatial & Real Estate Analytics</h3>
+          <p>
+            Built DMA-level and geospatial analytics models to evaluate store performance, customer penetration,
+            and online vs in-store behavior.
+          </p>
+          <p>
+            Supported data-driven decisions for store openings, remodels, and closures.
+          </p>
+          <div class="links">
+            <a class="pill" href="https://github.com/YOUR_USERNAME/real-estate-geo-analytics" target="_blank" rel="noreferrer">Code</a>
+          </div>
+          <div class="tags">
+            <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Geospatial</span><span class="tag">Retail Analytics</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="card">
-      <h2>Contact</h2>
-      <p>Email: yourname@email.com</p>
+    <!-- EXPERIENCE -->
+    <section class="card" id="experience" style="margin-top:16px;">
+      <h2>Experience</h2>
+
+      <div class="proj" style="margin-top:10px;">
+        <h3>Senior BI Engineer — Genesco Inc</h3>
+        <div class="muted small">Nov 2023 – Present • Atlanta, GA</div>
+        <ul class="clean">
+          <li>Led enterprise-scale BI and analytics initiatives across marketing, customer analytics, pricing, inventory, and real estate.</li>
+          <li>Built ML-driven segmentation, CLV, and forecasting solutions delivering $4M+ revenue and $1M+ cost savings.</li>
+          <li>Designed scalable semantic models and executive dashboards used by leadership across multiple brands.</li>
+        </ul>
+      </div>
+
+      <div class="proj" style="margin-top:12px;">
+        <h3>Senior Business Consultant — Perficient Inc</h3>
+        <div class="muted small">Sep 2021 – Sep 2023 • Austin, TX</div>
+        <ul class="clean">
+          <li>Performed SQL-driven customer segmentation using RFM, reducing churn by 15% through targeted retention strategies.</li>
+          <li>Built customer and campaign analytics using event-based clickstream data from Google Analytics.</li>
+          <li>Orchestrated ETL pipelines from Redshift and S3 using AWS Glue; designed executive Power BI dashboards with 60+ KPIs.</li>
+        </ul>
+      </div>
+
+      <div class="proj" style="margin-top:12px;">
+        <h3>Business Intelligence Analyst — Tata Consultancy Services</h3>
+        <div class="muted small">Oct 2014 – Nov 2019 • Pune, India</div>
+        <ul class="clean">
+          <li>Delivered dashboards and analytics for 12 retail clients across multiple verticals (Apparel, Electronics, Furniture, F&amp;B).</li>
+          <li>Created standardized analytics modules using Tableau, SQL, and R; saved 80+ hours/month and generated $200K annual revenue.</li>
+          <li>Supported forecasting/planning models, KPI management, and data engineering to improve decision-making and efficiency.</li>
+        </ul>
+      </div>
     </section>
+
+    <!-- EDUCATION + CERTS -->
+    <section class="card" id="education" style="margin-top:16px;">
+      <h2>Education & Highlights</h2>
+
+      <div class="grid two">
+        <div class="proj">
+          <h3>University of Cincinnati — MS in Information Systems</h3>
+          <div class="muted small">Carl H. Lindner School of Business • GPA 3.98/4.00 • Graduated Apr 2022</div>
+          <p style="margin-top:10px;">
+            Relevant coursework: Data Visualization, Data Mining for BI, Data Warehousing, Statistical Computing,
+            Machine Learning, Predictive Modeling, Time Series Forecasting.
+          </p>
+        </div>
+
+        <div class="proj">
+          <h3>Leadership & Certifications</h3>
+          <ul class="clean">
+            <li>Top 5 finalist — 2021 Aggie Hacks x Google Cloud Hackathon (COVID-19 Challenge)</li>
+            <li>Google Data Analytics Professional Certificate</li>
+            <li>Agentic AI & Gen AI Program — Harvard Business School (LangGraph & LangChain)</li>
+            <li>Advanced Business Analytics Specialization — University of Colorado Boulder</li>
+            <li>LLM Coursework — Stanford University (Transformers, Fine-tuning, Evaluation)</li>
+            <li>SAS Certified Visual Analytics for SAS Viya: Business Intelligence</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" id="contact" style="margin-top:16px;">
+      <h2>Contact</h2>
+      <p class="muted" style="margin-top:0;">Want to collaborate or talk about BI / analytics / ML roles?</p>
+      <p>
+        Email: <a href="mailto:tanmayts09@gmail.com">tanmayts09@gmail.com</a><br />
+        LinkedIn: <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer">linkedin.com/in/YOUR_LINKEDIN</a><br />
+        GitHub: <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noreferrer">github.com/YOUR_USERNAME</a>
+      </p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Tanmay Shrivastava • Built with GitHub Pages
+    </footer>
   </div>
 
-  <footer>© <span id="y"></span> Tanmay</footer>
-  <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

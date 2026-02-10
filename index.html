@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tanmay | Portfolio</title>
+  <style>
+    body{font-family:system-ui,Arial;margin:0;background:#0b1220;color:#e6e6e6}
+    header{padding:64px 20px;text-align:center;background:linear-gradient(135deg,#1e3a8a,#7c3aed)}
+    h1{margin:0;font-size:40px}
+    p{max-width:720px;margin:12px auto}
+    a{color:#fff}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 20px}
+    .card{background:#111a2e;border:1px solid #22304d;border-radius:14px;padding:18px;margin:14px 0}
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .tag{display:inline-block;padding:4px 10px;border:1px solid #2a3b61;border-radius:999px;margin:6px 6px 0 0;font-size:12px}
+    footer{padding:24px 20px;text-align:center;color:#aab}
+    .btn{display:inline-block;margin:10px 8px;padding:10px 14px;border-radius:10px;background:#0f172a;border:1px solid #2a3b61;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tanmay Shrivastava</h1>
+    <p>Data / ML Enthusiast • Portfolio</p>
+    <a class="btn" href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
+    <a class="btn" href="YOUR_RESUME_LINK" target="_blank">Resume</a>
+  </header>
+
+  <div class="wrap">
+    <section class="card">
+      <h2>About</h2>
+      <p>Write 3–5 lines about what you do, what you’re learning, and what roles you want.</p>
+    </section>
+
+    <section class="card">
+      <h2>Skills</h2>
+      <span class="tag">Python</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Pandas</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Power BI</span>
+    </section>
+
+    <section class="card">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Project 1 Title</h3>
+          <p>1–2 lines describing what it does + result.</p>
+          <p>
+            <a class="btn" href="https://github.com/YOUR_USERNAME/REPO1" target="_blank">Code</a>
+            <a class="btn" href="DEMO_LINK" target="_blank">Live</a>
+          </p>
+          <div>
+            <span class="tag">Python</span><span class="tag">ML</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Project 2 Title</h3>
+          <p>1–2 lines describing what it does + result.</p>
+          <p>
+            <a class="btn" href="https://github.com/YOUR_USERNAME/REPO2" target="_blank">Code</a>
+          </p>
+          <div>
+            <span class="tag">SQL</span><span class="tag">Analytics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Contact</h2>
+      <p>Email: yourname@email.com</p>
+    </section>
+  </div>
+
+  <footer>© <span id="y"></span> Tanmay</footer>
+  <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+</body>
+</html>
